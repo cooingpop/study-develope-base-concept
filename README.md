@@ -28,6 +28,7 @@ DI - 의존성 주입으로 의존적인 객체를 직접 생성하거나 제어
    @Componet 어노테이션으로 의존객체로 만들고 
 
 
+
 AOP - 공통기능을 모든 모듈에 적용하기 위한 방법
 \- 관점지향프로그래밍 메소드 전 후 지점에 설정 가능하며 트랜잭션, 에러처리와 같은 기능에 적합함
     (로깅', '트랜잭션', '에러 처리')
@@ -104,6 +105,32 @@ GC
 Spring Boot auto-configuration가 classpath를 체크합니다. 체크해서 예를 들어 thymeleaf가 있으면, Thymelead template resolver, view resolver, and a template engine 이 것들을 자동으로 설정해 줍니다.
 
 만약, Spring Data JPA가 classpath에 있으면, 자동으로 repository interface들로부터 repository implementations를 만들어줍니다.
+
+## Spring Annotation
+
+@Component
+component-scan을 선언에 의해 특정 패키지 안의 클래스들을 스캔하고, @Component Annotation이 있는 클래스에 대하여 bean 인스턴스를 생성한다.
+@Controller, @Service, @Repository
+@Component —구체화—> @Controller, @Service, @Repository
+bean으로 등록
+해당 클래스가 Controller/Service/Repository로 사용됨을 Spring Framework에 알린다.
+
+@RestController
+@Controller + @ResponseBody
+@ResponseBody를 모든 메소드에서 적용한다.
+메소드의 반환 결과(문자열)를 JSON 형태로 반환한다.
+@Controller 와 @RestController 의 차이
+@Controller
+API와 view를 동시에 사용하는 경우에 사용
+대신 API 서비스로 사용하는 경우는 @ResponseBody를 사용하여 객체를 반환한다.
+view(화면) return이 주목적
+@RestController
+view가 필요없는 API만 지원하는 서비스에서 사용 (Spring 4.0.1부터 제공)
+@RequestMapping 메서드가 기본적으로 @ResponseBody 의미를 가정한다.
+data(json, xml 등) return이 주목적
+즉, @RestController = @Controller + @ResponseBody
+
+## Bean 생명주기
 
 ## Spring Boot Starter Dependency
 
@@ -232,5 +259,7 @@ POJO는 말 그대로 해석을 하면 오래된 방식의 간단한 자바 오�
 - 비동기 - 논블록킹 리액티브 개발에 사용
 - 효율적으로 동작하는 고성능 웹어플리케이션 개발
 - 서비스간 호출이 많은 마이크로서비스 아키텍처에 적합
+
+
 
 
